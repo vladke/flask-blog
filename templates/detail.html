@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block body %}
+<h2>{{ post.title }}</h2>
+<div class="body">
+{{ post.html|markdown|safe }}
+
+<div class="info">
+<small>Posted by {{ config['user']}} on {{ post.created|friendlytime }}</small>
+<p>Category: <a href="{{ url_for('showcat', slug=post.category.slug) }}">{{ post.category.title }}</a></p>
+</div>
+</div>
+
+{% endblock %}

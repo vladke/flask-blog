@@ -1,0 +1,132 @@
+/* General Rules */
+
+.container {
+	width: 700px;
+	margin: auto;
+}
+
+body {
+	font-family:"Helvetica Neue";
+	font-weight:300;
+}
+
+a {
+	color:#D44950;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#555;
+}
+
+/* main.html */
+
+header {
+	font-family:Georgia, Times, serif;
+	overflow:hidden;
+	margin-bottom:1em;
+}
+
+header a[id=title] {
+	color:#000;
+}
+
+header a[id=title]:hover {
+	color:#555;
+}
+
+header h2 {
+	float:left;
+	font-weight:normal;
+	font-size:275%;
+	/*width: 80%;*/
+}
+
+header p.login {
+	float:right;
+	padding-top:15px;
+	/*width:18%;*/
+}
+
+header a {
+	padding-right:10px;
+}
+
+header h2, header p {
+	padding:0px;
+	margin:0px;
+}
+
+section {
+	clear:both;
+}
+
+section h2 {
+	font-family:Georgia, Times, serif;
+	font-weight:normal;
+}
+
+footer {
+	border-top: 1px dotted #D44950;
+	clear:both;
+}
+
+/* index.html*/
+
+.post {
+	padding-bottom: 1em;
+	margin-bottom:1em;
+}
+
+.post a#title {
+	font-size:150%;
+	font-weight: 400;
+}
+
+.post a#del {
+	color:#444;
+	float:right;
+}
+
+.post a#title:hover {
+	color:#555;
+}
+
+.post small {
+	color:#ccc;
+}
+
+.post a#more {
+	font-size:80%;
+}
+
+.post .info {
+	font-size:80%;
+}
+
+.post .info #cat, .post .info #tags {
+	display:inline;
+}
+
+/* detail.html */
+
+.body {
+	background-color:#E3E3E3;
+	padding:15px;
+	margin-bottom:15px;
+}
+
+/* Forms */
+
+form input#title {
+	width:200px;
+}
+
+form label {
+	width:150px;
+	float:left;
+}
+
+form textarea, form input[type="submit"] {
+	margin-left: 150px;
+}
