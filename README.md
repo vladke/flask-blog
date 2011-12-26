@@ -6,14 +6,14 @@ Setup
 
 `python app.py`
 
-Performance
+Performance (Werkzeug development server)
 -----------
 
-	Benchmarking mb.kritz.me (be patient)
+	Benchmarking xxx.com (be patient)
 
 
 	Server Software:        Werkzeug/0.8.1
-	Server Hostname:        mb.kritz.me
+	Server Hostname:        xxx
 	Server Port:            80
 
 	Document Path:          /
