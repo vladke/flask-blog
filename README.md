@@ -3,7 +3,7 @@ flask-blog
 
 Setup
 -----
-
+`python -c "from app import db;db.create_all()"`
 `python app.py`
 
 Performance (Werkzeug development server)

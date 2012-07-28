@@ -112,7 +112,7 @@ def timesince(dt):
 @app.route('/')
 @cached(120) # from 200 req/s to 800 req/s
 def index():
-	posts = Post.query.all()[:-5:-1]
+	posts = Post.query.all()[:app.config['post_count']:-1]
 	return render_template('index.html', posts=posts)
 
 @app.route('/archive/')
@@ -139,9 +139,7 @@ def newpost():
 			title = request.form['title']
 			body = request.form['body']
 			tags = request.form['tags']
-			#tags = [tag.strip() for tag in request.form['tags'].split(',')]
 			category = Category.query.filter_by(title=request.form['category'])
-			#author = request.form['author']
 		except:
 			flash('There was an error with your input.')
 			return redirect(url_for('newpost'))
