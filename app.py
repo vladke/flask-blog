@@ -6,7 +6,6 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.markdown import Markdown
 from werkzeug.contrib.cache import SimpleCache
 
-import os
 import re
 from datetime import datetime
 #from functools import wraps
@@ -18,8 +17,7 @@ cache = SimpleCache()
 app = Flask(__name__)
 
 app.debug = True
-cwd = os.getcwd()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///%s/posts.db' % cwd  # Brought the DB to app directory
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/posts.db'
 
 #app.config['USER'] = 'admin'
 #app.config['PASSWORD'] = 'default'
