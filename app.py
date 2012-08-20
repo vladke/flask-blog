@@ -110,7 +110,8 @@ def timesince(dt):
 @app.route('/')
 @cached(120)  # from 200 req/s to 800 req/s
 def index():
-    posts = Post.query.order_by('created DESC').limit(5)  # Ordering by created time DESC isstead of reversing
+    posts = Post.query.order_by('created DESC').limit(app.config['post_count'])
+    # Ordering by created time DESC isstead of reversing
     return render_template('index.html', posts=posts)
 
 
@@ -125,7 +126,6 @@ def all():
 @cached(120)
 def detail(slug):
     post = Post.query.filter_by(slug=slug).first()
-    print post.category
     if post:
         return render_template('detail.html', post=post)
     else:
@@ -140,7 +140,8 @@ def newpost():
             title = request.form['title']
             body = request.form['body']
             tags = request.form['tags']
-            category = Category.query.filter_by(title=request.form['category']).first()  # Added first() so that only one category is added
+            category = Category.query.filter_by(title=request.form['category']).first()
+            # Added first() so that only one category is added
         except Exception as e:
             flash('There was an error with your input: %s' % e)
             return redirect(url_for('newpost'))
