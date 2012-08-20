@@ -7,6 +7,7 @@
 <div class="info">
 <small>Posted by {{ config['user']}} on {{ post.created|friendlytime }}</small>
 <p>Category: <a href="{{ url_for('showcat', slug=post.category.slug) }}">{{ post.category.title }}</a></p>
+<p id="tags">Tags: {{ ', '.join(post.tags.split(',')) }}</p>
 </div>
 </div>
 
