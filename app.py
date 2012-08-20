@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 app.debug = True
 cwd = os.getcwd()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///%s/posts.db' % cwd
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///%s/posts.db' % cwd  # Brought the DB to app directory
 
 #app.config['USER'] = 'admin'
 #app.config['PASSWORD'] = 'default'
@@ -52,7 +52,7 @@ Markdown(app)
 
 
 def slugify(title):
-    _title = title[:24].replace(' ', '-')
+    _title = title[:99].replace(' ', '-')  # Changed slug length to 100
     return '-'.join(re.findall(slug_re, _title))
 
 
@@ -82,7 +82,7 @@ class Post(db.Model):
         self.created = datetime.utcnow()
         self.tags = tags
         self.slug = slugify(title)
-        self.category = category
+        self.category = category  # added category to the Post object
 
     def __unicode__(self):
         return self.slug
@@ -112,7 +112,7 @@ def timesince(dt):
 @app.route('/')
 @cached(120)  # from 200 req/s to 800 req/s
 def index():
-    posts = Post.query.order_by('created DESC').limit(5)
+    posts = Post.query.order_by('created DESC').limit(5)  # Ordering by created time DESC isstead of reversing
     return render_template('index.html', posts=posts)
 
 
@@ -142,7 +142,7 @@ def newpost():
             title = request.form['title']
             body = request.form['body']
             tags = request.form['tags']
-            category = Category.query.filter_by(title=request.form['category']).first()
+            category = Category.query.filter_by(title=request.form['category']).first()  # Added first() so that only one category is added
         except Exception as e:
             flash('There was an error with your input: %s' % e)
             return redirect(url_for('newpost'))
